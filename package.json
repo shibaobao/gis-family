@@ -20,20 +20,23 @@
     "style-loader": "^0.13.1"
   },
   "devDependencies": {
-    "leancloud-storage": "^1.3.3",
+    "babel-core": "^6.14.0",
     "babel-loader": "^6.2.4",
     "css-loader": "^0.23.1",
+    "express": "^4.14.0",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "leancloud-storage": "^1.3.3",
+    "lodash": "^4.13.1",
     "node-sass": "^3.7.0",
+    "q": "^1.4.1",
+    "react": "15.x",
+    "react-dom": "15.x",
+    "react-redux": "^4.1.2",
+    "redux": "^3.1.2",
     "sass-loader": "^3.2.0",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
-    "webpack": "^1.13.2",
-    "react-dom": "15.x",
-    "react-redux": "^4.1.2",
-    "lodash": "^4.13.1",
-    "redux": "^3.1.2",
-    "react": "15.x",
-    "q": "^1.4.1"
+    "webpack": "^1.13.2"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
