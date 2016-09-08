@@ -1,0 +1,24 @@
+.btn{
+  background-color: $c-white;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px 20px;
+  border-radius: 3px;
+  &:hover{
+    background-color: #ddd;
+  }
+  &:active{
+    background-color: #ccc;
+  }
+}
+
+.btn-primary{
+  background-color: #ea7e53;
+  &:hover{
+    background-color: $c-orange-hover;
+  }
+  &:active{
+    background-color: $c-orange-active;
+  }
+}
