@@ -1,38 +1,29 @@
-var webpack = require('webpack');
-var path = require('path');
-var OpenBrowserPlugin = require('open-browser-webpack-plugin');
+const path = require('path');
+const webpack = require('webpack');
+
+const APP_PATH = path.resolve(ROOT_PATH, 'app');
+const BUILD_PATH = path.resolve(ROOT_PATH, 'dist');
+
 module.exports = {
-  devServer: {
-    historyApiFallback: true,
-    hot: true,
-    inline: true,
-    progress: true,
-    port: 8080
+  entry:{
+    index: APP_PATH + '/js/index.js'
   },
-  entry: [
-    'webpack/hot/dev-server',
-    'webpack-dev-server/client?http://localhost:8080',
-    path.resolve(__dirname, 'app/main.jsx')
-  ],
   output: {
-    path: __dirname + '/build',
-    publicPath: '/build/',
-    filename: './bundle.js'
+    path: BUILD_PATH,
+    filename: '[name].js'
   },
-  module: {
-    loaders:[
-      { test: /\.css$/, include: path.resolve(__dirname, 'app'), loader: 'style-loader!css-loader' },
-      { test: /\.less$/, loader: "style!css!less" },
-      { test: /\.(png|jpeg|gif)$/, include: path.resolve(__dirname, 'app'), loader:'file-loader?name=./build/imgs/[name].[ext]'},
-      { test: /\.scss$/, include: path.resolve(__dirname, 'app'), loader: "style!css!sass"},
-      { test: /\.js[x]?$/, include: path.resolve(__dirname, 'app'), exclude: /node_modules/, loader: 'babel-loader' },
-    ]
-  },
+
   resolve: {
     extensions: ['', '.js', '.jsx'],
   },
-  plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new OpenBrowserPlugin({ url: 'http://localhost:8080' })
-  ]
+
+  module: {
+    loaders: [
+      { test: /\.css$/, loader: 'style!css' },
+      { test: /\.jsx?$/, loader: 'babel-loader', exclude: /node_modules/, query: { presets: ['es2015', 'react'] } },
+      { test: /\.(png|jpeg|gif)$/, loader: "url-loader?limit=100000" },
+      { test: /\.scss$/, loader: ExtractTextPlugin.extract( "style-loader", "css-loader!sass-loader" )
+      },
+    ]
+  },
 };
